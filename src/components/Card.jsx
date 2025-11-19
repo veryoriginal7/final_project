@@ -1,29 +1,49 @@
 import { useState } from 'react';
 import './Card.css';
-import more from './more.png';
 import { Link } from 'react-router-dom';
+import { supabase } from '../client';
 
-const Card = ({ id, title, picture, created_at, notes, totalprice }) => {
-        
-  const [count, setCount] = useState(0);
-  const updateCount = () => setCount(c => c + 1);
+const Card = ({ id, title, picture, created_at, upvotes, totalprice }) => {
+  const [count, setCount] = useState(upvotes || 0);
+
+  const handleUpvote = async () => {
+    const newCount = count + 1;
+    setCount(newCount);
+
+    // Update upvotes in Supabase
+    const { error } = await supabase
+      .from('builds')
+      .update({ upvotes: newCount })
+      .eq('id', id);
+
+    if (error) console.error(error);
+  };
 
   return (
     <div className="Card">
-      {/* Link to detail page */}
-      <Link to={`/build/${id}`}>
-        <h2 className="title">Name: {title}</h2>
-        <h3 className="create">Created at {created_at}</h3>
-        <h3 className="notes">Notes: {notes}</h3>
-        <h3 className="totalprice">Total Price: ${totalprice}</h3>
-        <img className="picture" alt="build pic" src={picture} />
+      {/* Link to build detail page */}
+      <Link to={`/build/${id}`} className="card-link">
+        <h2 className="title">{title}</h2>
+        <p className="created-at">Created at: {created_at}</p>
+        <p className="total">total cost : {totalprice}</p>
+        {picture && (
+          <img
+            className="picture"
+            src={picture.startsWith("http") ? picture : picture}
+            alt="Build"
+            style={{ width: "200px", height: "auto", marginBottom: "10px" }}
+          />
+        )}
+        <p>Upvotes: {count}</p>
       </Link>
 
-      {/* Link to edit page */}
+      <button className="upvote-button" onClick={handleUpvote}>
+        Upvote
+      </button>
+
       <Link to={`/edit/${id}`}>
-        <button className="deleteButton">edit</button>
+        <button className="edit-button">Edit</button>
       </Link>
-
     </div>
   );
 };

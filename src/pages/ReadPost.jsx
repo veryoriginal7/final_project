@@ -41,6 +41,8 @@ const ReadPost = () => {
                         totalprice={post.gpu_price + post.cpu_price + post.ram_price + post.storage_price + post.psu_price + post.motherboard_price + post.case_price}
                         case_name={post.case_name}
                         case_price={post.case_price}
+                        created_at={post.created_at}
+                        upvotes={post.upvotes}
                     />
                 ) : <h2>{'We don\'t have any posts yet.'}</h2>
             }
