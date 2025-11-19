@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { supabase } from "../client";
-
+import './ImageUpload.css';
 export default function ImageUpload({ picture, setPicture }) {
   const [uploading, setUploading] = useState(false);
 

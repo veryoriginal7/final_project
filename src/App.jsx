@@ -8,6 +8,8 @@ import Login from "./pages/login";
 import { useContext } from "react";
 import './App.css';
 import BuildDetail from "./BuildDetail";
+import HomeFeed from "./components/HomeFeed";
+
 function ProtectedRoute({ children }) {
   const { user } = useContext(AuthContext);
   if (!user) return <Navigate to="/login" />;
@@ -16,7 +18,7 @@ function ProtectedRoute({ children }) {
 
 function AppRoutes() {
   const element = useRoutes([
-    { path: "/", element: <ReadPosts /> },
+    { path: "/", element: <HomeFeed /> },
     { path: "/login", element: <Login /> },
     { path: "/edit/:id", element: <ProtectedRoute><EditPost /></ProtectedRoute> },
     { path: "/new", element: <ProtectedRoute><CreatePost /></ProtectedRoute> },

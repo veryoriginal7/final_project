@@ -1,0 +1,37 @@
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 75, 255, 0.15); /* Blue shadow */
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #b3c7ff;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px #007bff33;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #005ecb;
+}

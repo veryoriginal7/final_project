@@ -1,0 +1,19 @@
+.feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.feed input, .feed select {
+  display: inline-block;
+  width: auto;
+  margin-right: 10px;
+  border: 1px solid #b3c7ff;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.feed input:focus, .feed select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px #007bff33;
+}

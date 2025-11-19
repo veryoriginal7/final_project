@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../client";
 import Card from "./card";
+import './HomeFeed.css';
 
 export default function HomeFeed() {
   const [builds, setBuilds] = useState([]);

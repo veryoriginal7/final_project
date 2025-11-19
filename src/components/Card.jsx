@@ -25,15 +25,8 @@ const Card = ({ id, title, picture, created_at, upvotes, totalprice }) => {
       <Link to={`/build/${id}`} className="card-link">
         <h2 className="title">{title}</h2>
         <p className="created-at">Created at: {created_at}</p>
-        <p className="total">total cost : {totalprice}</p>
-        {picture && (
-          <img
-            className="picture"
-            src={picture.startsWith("http") ? picture : picture}
-            alt="Build"
-            style={{ width: "200px", height: "auto", marginBottom: "10px" }}
-          />
-        )}
+
+        
         <p>Upvotes: {count}</p>
       </Link>
 
